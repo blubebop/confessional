@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --font-roboto: "Roboto", sans-serif;
+  --font-display: "Nohemia", sans-serif;
+
+  --background: oklch(0.2 0.0121 237.38);
+  /* #11171b */
+  --foreground: oklch(0.91 0.0137 226.57);
+  /* #d8e3e8 */
+
+  --card: oklch(0.23 0.0151 235.73);
+  /* #171F24, dark blue background */
+  --card-border: oklch(0.3 0.0165 237.29);
+  /* #273036, dark blue border */
+  --card-foreground: oklch(0.75 0.0115 234.88);
+  /* #A8B0B5 , gray text (same as muted) */
+  --popover: oklch(0.23 0.0151 235.73);
+  /* #171F24, dark blue background */
+  --popover-foreground: oklch(0.75 0.0115 234.88);
+  /* #A8B0B5 , gray text (same as muted) */
+
+  --primary: oklch(0.9 0.258901 134.4143);
+  /* BRAND GREEN */
+  --primary-foreground: oklch(0.19 0.0099 234.39);
+  --primary-border: oklch(0.77 0.1154 176.56);
+  /* aqua green border for primary buttons */
+
+  --secondary: oklch(0.22 0.0143 239.37);
+  /* dark blue color */
+  --secondary-foreground: oklch(0.68 0.01 232.44);
+  /* muted grey for foreground */
+  --secondary-border: oklch(0.2692 0.0189 232.21);
+  /* #1D282E */
+
+  --tertiary: oklch(0.74 0.13476 252.94);
+  /* #6BB0FF - blue */
+  --tertiary-foreground: #171F24;
+  /* use primary-foreground */
+
+  --muted: oklch(0.75 0.0115 234.88);
+  /* #A8B0B5 , gray text */
+  --muted-foreground: oklch(0.68 0.01 232.44);
+  --accent: oklch(0.26 0.0171 237.51);
+  /* #1c252b , dark blue */
+  --accent-foreground: oklch(0.59 0.0085 228.94);
+  /* #797F82 , gray text */
+  --success: #1EFF00;
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.91 0.0137 226.57);
+  /* #d8e3e8 */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(0.2692 0.0189 232.21);
+  /* #1D282E */
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.9 0.258901 134.4143);
+  /* brand green */
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.2 0.0121 237.38);
+  --sidebar-foreground: oklch(0.91 0.0137 226.57);
+  /* #D9E4E9, white text, less white than foreground */
+
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.22 0.0143 239.37);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+
+  --sidebar-border: oklch(0.22 0.0143 239.37);
+
+  --sidebar-ring: oklch(0.556 0 0);
+
+  /* GAME HUD STAGE (docs/GAME-HUD.md)
+     The three figures behind GameHud's stage height. Tuned here rather than in
+     the component because the offset is DERIVED from the chrome stacked above
+     the frame and has to move with it.
+
+     --game-hud-stage-offset = platform NavTop (80)
+                             + GameHudPage's reclaimed top padding (24)
+                             + the frame's top border (3)
+                             + the HUD title bar (40) + its rule (1)
+                             + ~20 so the frame clears the fold.
+
+     These match the live platform values, so the stage you develop against in
+     this template is the stage players get. Do not retune them per game — use
+     GameHud's `stageClassName` for a per-game floor or aspect override. */
+  --game-hud-stage-offset: 170px;
+  --game-hud-stage-min: 560px;
+  --game-hud-stage-max: 900px;
+}
+
+@theme inline {
+  /* FONTS */
+  --font-roboto: var(--font-roboto);
+  --font-nohemia: var(--font-nohemia);
+
+  /* SIZES */
+  --breakpoint-xs: 480px;
+
+  /* COLORS */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-border: var(--secondary-border);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-primary-border: var(--primary-border);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --radius: 0.5rem;
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply text-foreground;
+  }
+}
+
+html {
+  background-image: url("/shared/background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: var(--background);
+  height: 100%;
+}
